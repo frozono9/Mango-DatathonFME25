@@ -14,21 +14,20 @@ La versión **`8.py`** es la final que nos permitió alcanzar **55.57900 de accu
 
 ---
 
-## 📂 Estructura del Repositorio
+## Estructura del Repositorio
 
 ```
 .
 ├── data/
 │   ├── train.csv        # Datos históricos de entrenamiento
-│   └── test.csv         # Datos de test para predicción
-├── notebooks/           # Notebooks exploratorios (opcional)
+│   └── test.csv         # Datos de test para predicción 
 ├── 1.py … 7.py          # Versiones previas de experimentos
 └── 8.py                 # Pipeline final (ensemble de finalistas)
 ```
 
 ---
 
-## ⚙️ Pipeline Final (`8.py`)
+## Pipeline Final (`8.py`)
 
 ### Pasos principales:
 
@@ -64,7 +63,7 @@ La versión **`8.py`** es la final que nos permitió alcanzar **55.57900 de accu
 
 ---
 
-## 🛠️ Requisitos
+## Requisitos
 
 * Python >= 3.9
 * pandas
@@ -78,7 +77,7 @@ pip install pandas numpy scikit-learn catboost
 
 ---
 
-## 🚀 Uso
+## Uso
 
 1. Coloca `train.csv` y `test.csv` en la carpeta `data/`
 2. Ejecuta el pipeline final:
@@ -91,7 +90,7 @@ python 8.py
 
 ---
 
-## 🏆 Logros y Aprendizajes
+## Logros y Aprendizajes
 
 * Ensemble de modelos CatBoost alcanzó **55.57900 de accuracy**
 * Feature engineering robusto fue más determinante que hiperajustar modelos complejos
@@ -100,7 +99,7 @@ python 8.py
 
 ---
 
-## 🔮 Próximos pasos
+## Próximos pasos
 
 * Entrenar embeddings visuales propios
 * Explorar TabNet o LightGBM con tuning automático
@@ -109,6 +108,6 @@ python 8.py
 
 ---
 
-## 📌 Créditos
+## Créditos
 
 Equipo **Oink Oink** – Estudiantes de Inteligencia Artificial UPC, Datathon FME 2025.
