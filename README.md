@@ -4,11 +4,7 @@
 
 Este repositorio contiene nuestro **pipeline final de predicción de demanda para Mango**, desarrollado para el **Datathon FME 2025**.
 
-Objetivo: **predecir la cantidad óptima de producción de prendas para la próxima temporada** usando:
-
-* Embeddings de imágenes de productos 🖼️
-* Atributos de las prendas 👗
-* Historial de ventas y producción 📊
+Objetivo: **predecir la cantidad óptima de producción de prendas para la próxima temporada**.
 
 La versión **`8.py`** es la final que nos permitió alcanzar **55.57900 de accuracy**, combinando los mejores modelos en un **ensemble ponderado**.
 
