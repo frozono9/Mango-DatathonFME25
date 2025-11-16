@@ -1,7 +1,5 @@
 # Oink Oink – Datathon FME 2025 – Mango
 
-![Datathon Banner](https://user-images.githubusercontent.com/placeholder/datathon_banner.png)
-
 ## 📖 Descripción
 
 Este repositorio contiene nuestro **pipeline final de predicción de demanda para Mango**, desarrollado para el **Datathon FME 2025**.
@@ -113,6 +111,4 @@ python 8.py
 
 ## 📌 Créditos
 
-Equipo **Oink Oink** – Estudiantes de Inteligencia Artificial, Datathon FME 2025.
-
-![Oink Oink Logo](https://user-images.githubusercontent.com/placeholder/oink_oink_logo.png)
+Equipo **Oink Oink** – Estudiantes de Inteligencia Artificial UPC, Datathon FME 2025.
