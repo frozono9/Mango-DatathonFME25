@@ -1,70 +1,65 @@
-# Oink Oink – Datathon FME 2025 – Mango
+# Datathon FME 2025 – Mango
 
-## 📖 Descripción
+## Description
 
-Este repositorio contiene nuestro **pipeline final de predicción de demanda para Mango**, desarrollado para el **Datathon FME 2025**.
+This repository contains our **final demand forecasting pipeline for Mango**, developed for the **Datathon FME 2025**.
 
-Objetivo: **predecir la cantidad óptima de producción de prendas para la próxima temporada** usando:
+Goal: **predict the optimal production quantity of garments for the next season**.
 
-* Embeddings de imágenes de productos 🖼️
-* Atributos de las prendas 👗
-* Historial de ventas y producción 📊
-
-La versión **`8.py`** es la final que nos permitió alcanzar **55.57900 de accuracy**, combinando los mejores modelos en un **ensemble ponderado**.
+Version **`8.py`** is the final one that allowed us to achieve **55.57900 accuracy**, combining the best models in a **weighted ensemble**.
 
 ---
 
-## 📂 Estructura del Repositorio
+## Repository Structure
 
 ```
 .
 ├── data/
-│   ├── train.csv        # Datos históricos de entrenamiento
-│   └── test.csv         # Datos de test para predicción
-├── notebooks/           # Notebooks exploratorios (opcional)
-├── 1.py … 7.py          # Versiones previas de experimentos
-└── 8.py                 # Pipeline final (ensemble de finalistas)
+│   ├── train.csv        # Historical training data
+│   └── test.csv         # Test data for prediction
+├── 1.py … 7.py          # Previous experiment versions
+└── 8.py                 # Final pipeline (ensemble of finalists)
 ```
 
 ---
 
-## ⚙️ Pipeline Final (`8.py`)
+## Final Pipeline (`8.py`)
 
-### Pasos principales:
+### Main steps:
 
-1. **Importación de librerías**
+1. **Library imports**
 
    * pandas, numpy, sklearn, catboost, etc.
 
-2. **Configuración global**
+2. **Global configuration**
 
-   * Paths, parámetros PCA, cross-validation, pesos del ensemble
+   * Paths, PCA parameters, cross-validation, ensemble weights
 
-3. **Ingeniería de características**
+3. **Feature engineering**
 
-   * Limpieza y agregación de datos
-   * Parsing y PCA de embeddings de imagen
-   * Features agregadas por familia, categoría y atributos
-   * Normalización logarítmica de features numéricas
+   * Data cleaning and aggregation
+   * Parsing and PCA of image embeddings
+   * Aggregated features by family, category, and attributes
+   * Logarithmic normalization of numerical features
 
-4. **Entrenamiento de modelos finalistas**
+4. **Training of finalist models**
 
-   * **Modelo A**: Alpha=0.78, learning_rate=0.01 (más estable)
-   * **Modelo B**: Alpha=0.75, learning_rate=0.03 (más agresivo)
-   * CatBoost con **K-Fold CV** para seleccionar iteraciones óptimas
+   * **Model A**: Alpha=0.78, learning_rate=0.01 (more stable)
+   * **Model B**: Alpha=0.75, learning_rate=0.03 (more aggressive)
+   * CatBoost with **K-Fold CV** to select optimal iterations
 
-5. **Ensemble ponderado**
+5. **Weighted ensemble**
 
-   * 60% Modelo A + 40% Modelo B
-   * Transformación inversa log1p para obtener predicciones reales
+   * 60% Model A + 40% Model B
+   * Inverse log1p transformation to obtain real predictions
 
-6. **Generación de submission**
+6. **Submission generation**
 
-   * Archivo `submission_catboost_V18_EnsembleFinalists.csv` listo para Kaggle/Datathon
+   * File `submission_catboost_V18_EnsembleFinalists.csv` ready for Kaggle/Datathon
 
 ---
 
-## 🛠️ Requisitos
+## Requirements
 
 * Python >= 3.9
 * pandas
@@ -78,37 +73,37 @@ pip install pandas numpy scikit-learn catboost
 
 ---
 
-## 🚀 Uso
+## Usage
 
-1. Coloca `train.csv` y `test.csv` en la carpeta `data/`
-2. Ejecuta el pipeline final:
+1. Place `train.csv` and `test.csv` in the `data/` folder
+2. Run the final pipeline:
 
 ```bash
 python 8.py
 ```
 
-3. Obtendrás `submission_catboost_V18_EnsembleFinalists.csv` con las predicciones finales.
+3. You will get `submission_catboost_V18_EnsembleFinalists.csv` with the final predictions.
 
 ---
 
-## 🏆 Logros y Aprendizajes
+## Achievements and Learnings
 
-* Ensemble de modelos CatBoost alcanzó **55.57900 de accuracy**
-* Feature engineering robusto fue más determinante que hiperajustar modelos complejos
-* Combinación de embeddings de imagen, atributos categóricos y datos históricos multi-temporada fue clave
-* Validación temporal (TimeSeriesSplit) evitó fugas de información y permitió modelos generalizables
-
----
-
-## 🔮 Próximos pasos
-
-* Entrenar embeddings visuales propios
-* Explorar TabNet o LightGBM con tuning automático
-* Añadir interpretabilidad al pipeline para entender qué atributos generan más demanda
-* Automatizar todo el flujo para producción real
+* CatBoost model ensemble achieved **55.57900 accuracy**
+* Robust feature engineering was more decisive than hypertuning complex models
+* Combination of image embeddings, categorical attributes, and multi-season historical data was key
+* Temporal validation (TimeSeriesSplit) avoided data leakage and enabled generalizable models
 
 ---
 
-## 📌 Créditos
+## Next Steps
 
-Equipo **Oink Oink** – Estudiantes de Inteligencia Artificial UPC, Datathon FME 2025.
+* Train our own visual embeddings
+* Explore TabNet or LightGBM with automatic tuning
+* Add interpretability to the pipeline to understand which attributes generate more demand
+* Automate the entire workflow for real production
+
+---
+
+## Credits
+
+Team **Oink Oink** – AI Students UPC, Datathon FME 2025.
