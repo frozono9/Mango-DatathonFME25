@@ -6,7 +6,7 @@ This repository contains our **final demand forecasting pipeline for Mango**, de
 
 Goal: **predict the optimal production quantity of garments for the next season**.
 
-Version **`8.py`** is the final one that allowed us to achieve **55.57900 accuracy**, combining the best models in a **weighted ensemble**.
+The final implementation is in `model.py` (cleaned and modularized), with `EDA.py` and `inference.py` helpers. The training pipeline produces an ensemble that was used in the original experiments.
 
 ---
 
@@ -15,15 +15,17 @@ Version **`8.py`** is the final one that allowed us to achieve **55.57900 accura
 ```
 .
 ├── data/
-│   ├── train.csv        # Historical training data
+│   ├── train.csv        # Historical training data (semicolon-separated)
 │   └── test.csv         # Test data for prediction
-├── 1.py … 7.py          # Previous experiment versions
-└── 8.py                 # Final pipeline (ensemble of finalists)
+├── EDA.py               # Exploratory Data Analysis script (plots & visualization)
+├── model.py             # Main training pipeline (single-run script)
+├── inference.py         # Simple CLI to predict using saved models from a JSON input
+└── outputs/             # Output models, artifacts and submissions
 ```
 
 ---
 
-## Final Pipeline (`8.py`)
+## Final Pipeline (`model.py`)
 
 ### Main steps:
 
@@ -55,7 +57,7 @@ Version **`8.py`** is the final one that allowed us to achieve **55.57900 accura
 
 6. **Submission generation**
 
-   * File `submission_catboost_V18_EnsembleFinalists.csv` ready for Kaggle/Datathon
+   * Writes `submission.csv` at the repository root
 
 ---
 
@@ -76,13 +78,49 @@ pip install pandas numpy scikit-learn catboost
 ## Usage
 
 1. Place `train.csv` and `test.csv` in the `data/` folder
-2. Run the final pipeline:
+2. Run the training pipeline (saves models to `outputs/` and writes `submission.csv` at repo root):
 
 ```bash
-python 8.py
+python model.py
 ```
 
-3. You will get `submission_catboost_V18_EnsembleFinalists.csv` with the final predictions.
+3. You will get `submission.csv` and models/artifacts under `outputs/`.
+## Exploratory Data Analysis (EDA)
+
+`EDA.py` generates a set of plots to inspect the training dataset. To execute it (and open plots), run:
+
+```bash
+python EDA.py
+```
+
+If running in a headless environment, you may redirect or save each plot; the script prints status messages as it runs.
+
+## Inference from JSON (optional)
+
+If you want to test the model on a JSON payload mirroring `data/test.csv`, use `inference.py`:
+
+```bash
+python inference.py --input-json sample_input.json --output-json predictions.json
+```
+
+This outputs a list of `{ ID, TARGET }`. The script reuses the same feature pipeline and needs `data/train.csv` present for group aggregations.
+
+## How to run the model
+
+- Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+- Place CSVs under `data/` (semicolon-separated): `train.csv`, `test.csv`.
+- Train and generate submission:
+
+```bash
+python model.py
+```
+
+- The submission is saved as `submission.csv` at the project root.
 
 ---
 
